@@ -1,15 +1,72 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blog - VIN NESIA</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog for VIN NESIA TOOLS with tips and updates on converter tools.">
+    <meta name="keywords" content="VIN NESIA TOOLS, blog, converter tools">
+    <meta name="author" content="VIN NESIA TOOLS">
+    <meta property="og:title" content="Blog - VIN NESIA TOOLS">
+    <meta property="og:description" content="Blog for VIN NESIA TOOLS with tips and updates on converter tools.">
+    <meta property="og:image" content="https://tools.vinnesia.my.id/img/logo.png">
+    <meta property="og:url" content="https://tools.vinnesia.my.id/blog.html">
+    <title>Blog - VIN NESIA TOOLS</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F8V8Y4XQN4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-F8V8Y4XQN4');
+    </script>
 </head>
-<body class="p-4 bg-gray-100 text-gray-800">
-  <a href="index.html" class="underline text-blue-600">&larr; Back to Home</a>
-  <h1 class="text-2xl font-bold mt-4">Blog</h1>
-  <p class="mt-2">This is the blog page for VIN NESIA. You can edit this content.</p>
+<body>
+    <header>
+        <div class="logo">
+            <a href="https://www.vinnesia.my.id">
+                <img src="img/logo.png" alt="VIN NESIA TOOLS Logo" class="logo-img" loading="lazy">
+                <h1>VIN NESIA TOOLS</h1>
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="terms.html">Terms</a></li>
+                <li><a href="privacy rara.html">Privacy</a></li>
+                <li><a href="blog.html">Blog</a></li>
+            </ul>
+        </nav>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode">
+            <i class="fas fa-moon"></i>
+        </button>
+    </header>
+
+    <main>
+        <section>
+            <h2>Blog</h2>
+            <article>
+                <h3>Cara Menggunakan JSON Formatter untuk API Development</h3>
+                <p>JSON Formatter membantu Anda merapikan kode JSON untuk debugging. Masukkan JSON Anda, klik "Format", dan dapatkan output yang mudah dibaca. Cocok untuk developer yang be personally kerja dengan API.</p>
+                <p><small>Posted on July 20, 2025</small></p>
+            </article>
+            <article>
+                <h3>Keuntungan Menggunakan Base64 Encoder</h3>
+                <p>Base64 berguna untuk mengkodekan data seperti gambar atau teks untuk transmisi yang aman. Pelajari cara menggunakan alat kami untuk encode/decode dengan cepat.</p>
+                <p><small>Posted on July 15, 2025</small></p>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 VIN NESIA TOOLS. All rights reserved.</p>
+        <p>Contact: <a href="mailto:Vin.nesiaa.id@gmail.com">Vin.nesiaa.id@gmail.com</a></p>
+        <p>Follow us: <a href="#">Twitter</a> | <a href="#">GitHub</a></p>
+    </footer>
+
+    <script src="js/scripts.js"></script>
 </body>
 </html>
