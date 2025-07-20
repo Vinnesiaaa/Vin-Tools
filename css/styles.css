@@ -22,6 +22,9 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .logo {
@@ -130,7 +133,7 @@ body.light-mode .tool-section {
 }
 
 .tooltip:hover::after {
-    content: attr(data-tooltip);
+    content: attr(aria-label);
     position: absolute;
     background: #2e2e4e;
     color: #e0e0e0;
@@ -211,6 +214,17 @@ body.light-mode button:hover {
     min-height: 20px;
 }
 
+.loading {
+    display: none;
+    font-size: 14px;
+    color: #98fb98;
+    margin-top: 5px;
+}
+
+.loading.active {
+    display: block;
+}
+
 footer {
     text-align: center;
     padding: 20px;
@@ -243,8 +257,12 @@ footer a:hover {
     .logo h1 {
         font-size: 18px;
     }
+    nav ul {
+        flex-wrap: wrap;
+    }
     nav ul li {
         margin-left: 10px;
+        margin-bottom: 10px;
     }
     .button-group {
         flex-wrap: wrap;
