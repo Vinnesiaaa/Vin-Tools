@@ -18,8 +18,9 @@ body.light-mode {
 
 header {
     background: linear-gradient(90deg, #4b0082, #2e8b57);
-    padding: 20px;
+    padding: 15px 20px;
     display: flex;
+    flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
     position: sticky;
@@ -30,6 +31,7 @@ header {
 .logo {
     display: flex;
     align-items: center;
+    flex-shrink: 0;
 }
 
 .logo-img {
@@ -41,6 +43,7 @@ header {
 .logo h1 {
     font-size: 24px;
     color: #e0e0e0;
+    white-space: nowrap;
 }
 
 .logo a {
@@ -48,13 +51,28 @@ header {
     color: inherit;
 }
 
+nav {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
 nav ul {
     list-style: none;
     display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+}
+
+nav ul::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
 }
 
 nav ul li {
-    margin-left: 20px;
+    margin: 0 10px;
 }
 
 nav ul li a {
@@ -62,6 +80,7 @@ nav ul li a {
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease;
+    white-space: nowrap;
 }
 
 nav ul li a:hover {
@@ -75,6 +94,8 @@ nav ul li a:hover {
     font-size: 20px;
     cursor: pointer;
     transition: transform 0.2s ease;
+    flex-shrink: 0;
+    margin-left: 10px;
 }
 
 .theme-toggle:hover {
@@ -248,21 +269,48 @@ footer a:hover {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    header {
+        padding: 10px 15px;
+        flex-direction: row;
+        align-items: center;
+    }
+    .logo {
+        flex-direction: row;
+        align-items: center;
+    }
+    .logo-img {
+        width: 35px;
+        height: 35px;
+    }
+    .logo h1 {
+        font-size: 20px;
+    }
+    nav ul {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        margin-top: 10px;
+    }
+    nav ul::-webkit-scrollbar {
+        display: none;
+    }
+    nav ul li {
+        margin: 0 8px;
+    }
+    nav ul li a {
+        font-size: 14px;
+    }
+    .theme-toggle {
+        font-size: 18px;
+        margin-left: 8px;
+    }
     .tool-section {
         padding: 10px;
     }
     .tool textarea {
         height: 80px;
-    }
-    .logo h1 {
-        font-size: 18px;
-    }
-    nav ul {
-        flex-wrap: wrap;
-    }
-    nav ul li {
-        margin-left: 10px;
-        margin-bottom: 10px;
     }
     .button-group {
         flex-wrap: wrap;
@@ -273,14 +321,27 @@ footer a:hover {
 }
 
 @media (max-width: 480px) {
+    header {
+        padding: 8px 10px;
+    }
     .logo-img {
         width: 30px;
         height: 30px;
     }
-    .tool h3 {
-        font-size: 16px;
+    .logo h1 {
+        font-size: 18px;
+    }
+    nav ul li {
+        margin: 0 6px;
+    }
+    nav ul li a {
+        font-size: 12px;
     }
     .theme-toggle {
+        font-size: 16px;
+        margin-left: 6px;
+    }
+    .tool h3 {
         font-size: 16px;
     }
 }
