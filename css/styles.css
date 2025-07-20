@@ -1,0 +1,268 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #1a1a2e;
+    color: #e0e0e0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-mode {
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+header {
+    background: linear-gradient(90deg, #4b0082, #2e8b57);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.logo h1 {
+    font-size: 24px;
+    color: #e0e0e0;
+}
+
+.logo a {
+    text-decoration: none;
+    color: inherit;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: #e0e0e0;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #98fb98;
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    color: #e0e0e0;
+    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+body.light-mode .theme-toggle {
+    color: #333;
+}
+
+main {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.tool-section {
+    background: #2e2e4e;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+body.light-mode .tool-section {
+    background: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tool {
+    margin-bottom: 30px;
+}
+
+.tool h3 {
+    color: #98fb98;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.tool h3 i {
+    margin-right: 8px;
+}
+
+.tooltip {
+    cursor: help;
+    background: #4b0082;
+    color: #fff;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5px;
+    font-size: 12px;
+}
+
+.tooltip:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    background: #2e2e4e;
+    color: #e0e0e0;
+    padding: 5px 10px;
+    border-radius: 4px;
+    z-index: 10;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+body.light-mode .tooltip {
+    background: #2e8b57;
+}
+
+body.light-mode .tooltip:hover::after {
+    background: #e0e0e0;
+    color: #333;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    background: #3c3c5c;
+    color: #e0e0e0;
+    border: 1px solid #4b0082;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+    resize: vertical;
+    transition: border-color 0.3s ease;
+}
+
+body.light-mode textarea {
+    background: #e0e0e0;
+    color: #333;
+    border-color: #2e8b57;
+}
+
+textarea:focus {
+    border-color: #98fb98;
+    outline: none;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+button {
+    background: #4b0082;
+    color: #e0e0e0;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background: #2e8b57;
+    transform: scale(1.05);
+}
+
+body.light-mode button {
+    background: #2e8b57;
+    color: #fff;
+}
+
+body.light-mode button:hover {
+    background: #4b0082;
+}
+
+.error-message {
+    color: #ff4d4d;
+    font-size: 14px;
+    margin-top: 5px;
+    min-height: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #1a1a2e;
+    border-top: 1px solid #4b0082;
+}
+
+body.light-mode footer {
+    background: #f4f4f9;
+    border-top: 1px solid #2e8b57;
+}
+
+footer a {
+    color: #98fb98;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .tool-section {
+        padding: 10px;
+    }
+    .tool textarea {
+        height: 80px;
+    }
+    .logo h1 {
+        font-size: 18px;
+    }
+    nav ul li {
+        margin-left: 10px;
+    }
+    .button-group {
+        flex-wrap: wrap;
+    }
+    button {
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-img {
+        width: 30px;
+        height: 30px;
+    }
+    .tool h3 {
+        font-size: 16px;
+    }
+    .theme-toggle {
+        font-size: 16px;
+    }
+}
