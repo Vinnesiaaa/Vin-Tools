@@ -1,126 +1,138 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="VIN NESIA - All-in-One Tools Platform for Productivity">
-  <meta name="author" content="vin.nesiaa.id@gmail.com">
-  <title>VIN NESIA - All-in-One Tools</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.10/dist/clipboard.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="VIN NESIA TOOLS offers free, browser-based converter tools for text, Base64, URL, JSON, CSV, and HTML.">
+    <meta name="keywords" content="converter tools, text converter, JSON formatter, Base64 encoder, URL encoder, VIN NESIA">
+    <meta name="author" content="VIN NESIA TOOLS">
+    <meta property="og:title" content="VIN NESIA TOOLS - Free Converter Tools">
+    <meta property="og:description" content="Free browser-based tools for text, Base64, URL, JSON, CSV, and HTML conversion.">
+    <meta property="og:image" content="https://tools.vinnesia.my.id/img/logo.png">
+    <meta property="og:url" content="https://tools.vinnesia.my.id">
+    <title>VIN NESIA TOOLS - Converter Tools</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F8V8Y4XQN4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-F8V8Y4XQN4');
+    </script>
 </head>
-<body class="bg-gray-100 text-gray-900 px-4 py-6">
-  <header class="text-center mb-8">
-    <img src="favicon.ico" alt="VIN NESIA Logo" class="mx-auto mb-2 w-12 h-12">
-    <h1 class="text-3xl font-bold">VIN NESIA</h1>
-    <p class="text-sm text-gray-600">vin.nesiaa.id@gmail.com</p>
-  </header>
+<body>
+    <header>
+        <div class="logo">
+            <a href="https://www.vinnesia.my.id">
+                <img src="img/logo.png" alt="VIN NESIA TOOLS Logo" class="logo-img" loading="lazy">
+                <h1>VIN NESIA TOOLS</h1>
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="terms.html">Terms</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="blog.html">Blog</a></li>
+            </ul>
+        </nav>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode">
+            <i class="fas fa-moon"></i>
+        </button>
+    </header>
 
-  <main class="space-y-12">
+    <main>
+        <section class="tool-section">
+            <h2>Converter Tools</h2>
+            <div class="tool">
+                <h3><i class="fas fa-text-height"></i> Text to Uppercase / Lowercase <span class="tooltip" data-tooltip="Converts text to all uppercase or lowercase letters">?</span></h3>
+                <textarea id="text-input" placeholder="Enter text here..." aria-label="Text input for case conversion"></textarea>
+                <div class="button-group">
+                    <button onclick="convertText('uppercase')" aria-label="Convert text to uppercase">To Uppercase</button>
+                    <button onclick="convertText pathogens('lowercase')" aria-label="Convert text to lowercase">To Lowercase</button>
+                    <button onclick="copyToClipboard('text-output')" aria-label="Copy output text">Copy</button>
+                    <button onclick="clearText('text-input', 'text-output')" aria-label="Clear text input and output">Clear</button>
+                </div>
+                <textarea id="text-output" readonly aria-label="Converted text output"></textarea>
+                <div id="text-error" class="error-message"></div>
+            </div>
 
-    <!-- Text Case Converter -->
-    <section class="bg-white p-6 rounded shadow" id="case">
-      <h2 class="text-xl font-semibold mb-2">Text Case Converter</h2>
-      <textarea id="case-input" rows="4" class="w-full border p-2 rounded" placeholder="Enter your text here..."></textarea>
-      <div class="flex flex-wrap gap-2 my-2">
-        <button onclick="toUpper()" class="btn">UPPERCASE</button>
-        <button onclick="toLower()" class="btn">lowercase</button>
-        <button onclick="toCapitalize()" class="btn">Capitalize</button>
-        <button onclick="toSentence()" class="btn">Sentence case</button>
-      </div>
-      <textarea id="case-result" rows="4" class="w-full border p-2 rounded" placeholder="Converted text..." readonly></textarea>
-    </section>
+            <div class="tool">
+                <h3><i class="fas fa-lock"></i> Base64 Encoder / Decoder <span class="tooltip" data-tooltip="Encodes or decodes text to/from Base64">?</span></h3>
+                <textarea id="base64-input" placeholder="Enter text or Base64 here..." aria-label="Base64 input"></textarea>
+                <div class="button-group">
+                    <button onclick="base64Encode()" aria-label="Encode to Base64">Encode</button>
+                    <button onclick="base64Decode()" aria-label="Decode from Base64">Decode</button>
+                    <button onclick="copyToClipboard('base64-output')" aria-label="Copy Base64 output">Copy</button>
+                    <button onclick="clearText('base64-input', 'base64-output')" aria-label="Clear Base64 input and output">Clear</button>
+                </div>
+                <textarea id="base64-output" readonly aria-label="Base64 output"></textarea>
+                <div id="base64-error" class="error-message"></div>
+            </div>
 
-    <!-- Password Generator -->
-    <section class="bg-white p-6 rounded shadow" id="password">
-      <h2 class="text-xl font-semibold mb-2">Password Generator</h2>
-      <input id="pw-length" type="number" value="12" min="4" max="32" class="border p-2 w-24 rounded">
-      <button onclick="generatePassword()" class="btn ml-2">Generate</button>
-      <input id="pw-result" type="text" class="w-full mt-3 p-2 border rounded" readonly>
-    </section>
+            <div class="tool">
+                <h3><i class="fas fa-link"></i> URL Encoder / Decoder <span class="tooltip" data-tooltip="Encodes or decodes URLs for safe usage">?</span></h3>
+                <textarea id="url-input" placeholder="Enter URL here..." aria-label="URL input"></textarea>
+                <div class="button-group">
+                    <button onclick="urlEncode()" aria-label="Encode URL">Encode</button>
+                    <button onclick="urlDecode()" aria-label="Decode URL">Decode</button>
+                    <button onclick="copyToClipboard('url-output')" aria-label="Copy URL output">Copy</button>
+                    <button onclick="clearText('url-input', 'url-output')" aria-label="Clear URL input and output">Clear</button>
+                </div>
+                <textarea id="url-output" readonly aria-label="URL output"></textarea>
+                <div id="url-error" class="error-message"></div>
+            </div>
 
-    <!-- Word & Character Counter -->
-    <section class="bg-white p-6 rounded shadow" id="counter">
-      <h2 class="text-xl font-semibold mb-2">Word & Character Counter</h2>
-      <textarea id="wc-input" rows="5" class="w-full border p-2 rounded" placeholder="Type or paste text..."></textarea>
-      <p class="mt-2">Words: <span id="word-count">0</span> | Characters: <span id="char-count">0</span></p>
-    </section>
+            <div class="tool">
+                <h3><i class="fas fa-code"></i> JSON Formatter <span class="tooltip" data-tooltip="Formats JSON for readability">?</span></h3>
+                <textarea id="json-input" placeholder="Enter JSON here..." aria-label="JSON input"></textarea>
+                <div class="button-group">
+                    <button onclick="formatJSON()" aria-label="Format JSON">Format</button>
+                    <button onclick="copyToClipboard('json-output')" aria-label="Copy formatted JSON">Copy</button>
+                    <button onclick="clearText('json-input', 'json-output')" aria-label="Clear JSON input and output">Clear</button>
+                </div>
+                <textarea id="json-output" readonly aria-label="Formatted JSON output"></textarea>
+                <div id="json-error" class="error-message"></div>
+            </div>
 
-    <!-- Base64 Encoder/Decoder -->
-    <section class="bg-white p-6 rounded shadow" id="base64">
-      <h2 class="text-xl font-semibold mb-2">Base64 Encoder / Decoder</h2>
-      <textarea id="b64-input" rows="3" class="w-full border p-2 rounded" placeholder="Enter text..."></textarea>
-      <div class="flex gap-2 mt-2">
-        <button onclick="encodeB64()" class="btn">Encode</button>
-        <button onclick="decodeB64()" class="btn">Decode</button>
-      </div>
-      <textarea id="b64-output" rows="3" class="w-full border p-2 rounded mt-2" readonly></textarea>
-    </section>
+            <div class="tool">
+                <h3><i class="fas fa-file-csv"></i> CSV to JSON Converter <span class="tooltip" data-tooltip="Converts CSV data to JSON format">?</span></h3>
+                <textarea id="csv-input" placeholder="Enter CSV here..." aria-label="CSV input"></textarea>
+                <div class="button-group">
+                    <button onclick="convertCSVtoJSON()" aria-label="Convert CSV to JSON">Convert</button>
+                    <button onclick="copyToClipboard('csv-output')" aria-label="Copy JSON output">Copy</button>
+                    <button onclick="clearText('csv-input', 'csv-output')" aria-label="Clear CSV input and output">Clear</button>
+                </div>
+                <textarea id="csv-output" readonly aria-label="JSON output from CSV"></textarea>
+                <div id="csv-error" class="error-message"></div>
+            </div>
 
-  </main>
+            <div class="tool">
+                <h3><i class="fas fa-html5"></i> HTML Minifier / Beautifier <span class="tooltip" data-tooltip="Minifies or beautifies HTML code">?</span></h3>
+                <textarea id="html-input" placeholder="Enter HTML here..." aria-label="HTML input"></textarea>
+                <div class="button-group">
+                    <button onclick="minifyHTML()" aria-label="Minify HTML">Minify</button>
+                    <button onclick="beautifyHTML()" aria-label="Beautify HTML">Beautify</button>
+                    <button onclick="copyToClipboard('html-output')" aria-label="Copy HTML output">Copy</button>
+                    <button onclick="clearText('html-input', 'html-output')" aria-label="Clear HTML input and output">Clear</button>
+                </div>
+                <textarea id="html-output" readonly aria-label="HTML output"></textarea>
+                <div id="html-error" class="error-message"></div>
+            </div>
+        </section>
+    </main>
 
-  <footer class="text-center mt-12 text-sm text-gray-500">
-    <p>&copy; 2025 VIN NESIA — <a href="about.html" class="underline">About</a> | <a href="privacy.html" class="underline">Privacy</a> | <a href="terms.html" class="underline">Terms</a> | <a href="blog.html" class="underline">Blog</a></p>
-  </footer>
+    <footer>
+        <p>© 2025 VIN NESIA TOOLS. All rights reserved.</p>
+        <p>Contact: <a href="mailto:Vin.nesiaa.id@gmail.com">Vin.nesiaa.id@gmail.com</a></p>
+        <p>Follow us: <a href="#">Twitter</a> | <a href="#">GitHub</a></p>
+    </footer>
 
-  <style>
-    .btn {
-      background: #3b82f6;
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 0.375rem;
-      transition: background 0.3s;
-    }
-    .btn:hover {
-      background: #2563eb;
-    }
-  </style>
-
-  <script>
-    function toUpper() {
-      document.getElementById('case-result').value = document.getElementById('case-input').value.toUpperCase();
-    }
-    function toLower() {
-      document.getElementById('case-result').value = document.getElementById('case-input').value.toLowerCase();
-    }
-    function toCapitalize() {
-      const text = document.getElementById('case-input').value.toLowerCase().split(" ");
-      document.getElementById('case-result').value = text.map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
-    }
-    function toSentence() {
-      const text = document.getElementById('case-input').value.toLowerCase();
-      document.getElementById('case-result').value = text.charAt(0).toUpperCase() + text.slice(1);
-    }
-    function generatePassword() {
-      const length = document.getElementById('pw-length').value;
-      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()';
-      let password = '';
-      for (let i = 0; i < length; i++) {
-        password += chars.charAt(Math.floor(Math.random() * chars.length));
-      }
-      document.getElementById('pw-result').value = password;
-    }
-    const wcInput = document.getElementById('wc-input');
-    wcInput.addEventListener('input', () => {
-      const text = wcInput.value;
-      const words = text.trim().split(/\s+/).filter(Boolean);
-      document.getElementById('word-count').innerText = words.length;
-      document.getElementById('char-count').innerText = text.length;
-    });
-    function encodeB64() {
-      const text = document.getElementById('b64-input').value;
-      document.getElementById('b64-output').value = btoa(text);
-    }
-    function decodeB64() {
-      const text = document.getElementById('b64-input').value;
-      try {
-        document.getElementById('b64-output').value = atob(text);
-      } catch (e) {
-        document.getElementById('b64-output').value = 'Invalid Base64 input';
-      }
-    }
-  </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.9/beautify-html.min.js"></script>
+    <script src="js/scripts.js"></script>
 </body>
 </html>
