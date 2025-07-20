@@ -38,6 +38,7 @@
                 <li><a href="terms.html">Terms</a></li>
                 <li><a href="privacy.html">Privacy</a></li>
                 <li><a href="blog.html">Blog</a></li>
+                <li><a href="history.html">History</a></li>
             </ul>
         </nav>
         <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode">
@@ -49,20 +50,21 @@
         <section class="tool-section">
             <h2>Converter Tools</h2>
             <div class="tool">
-                <h3><i class="fas fa-text-height"></i> Text to Uppercase / Lowercase <span class="tooltip" data-tooltip="Converts text to all uppercase or lowercase letters">?</span></h3>
+                <h3><i class="fas fa-text-height"></i> Text to Uppercase / Lowercase <span class="tooltip" role="tooltip" aria-label="Converts text to all uppercase or lowercase letters">?</span></h3>
                 <textarea id="text-input" placeholder="Enter text here..." aria-label="Text input for case conversion"></textarea>
                 <div class="button-group">
                     <button onclick="convertText('uppercase')" aria-label="Convert text to uppercase">To Uppercase</button>
-                    <button onclick="convertText pathogens('lowercase')" aria-label="Convert text to lowercase">To Lowercase</button>
+                    <button onclick="convertText('lowercase')" aria-label="Convert text to lowercase">To Lowercase</button>
                     <button onclick="copyToClipboard('text-output')" aria-label="Copy output text">Copy</button>
                     <button onclick="clearText('text-input', 'text-output')" aria-label="Clear text input and output">Clear</button>
                 </div>
                 <textarea id="text-output" readonly aria-label="Converted text output"></textarea>
                 <div id="text-error" class="error-message"></div>
+                <div id="text-loading" class="loading">Processing...</div>
             </div>
 
             <div class="tool">
-                <h3><i class="fas fa-lock"></i> Base64 Encoder / Decoder <span class="tooltip" data-tooltip="Encodes or decodes text to/from Base64">?</span></h3>
+                <h3><i class="fas fa-lock"></i> Base64 Encoder / Decoder <span class="tooltip" role="tooltip" aria-label="Encodes or decodes text to/from Base64">?</span></h3>
                 <textarea id="base64-input" placeholder="Enter text or Base64 here..." aria-label="Base64 input"></textarea>
                 <div class="button-group">
                     <button onclick="base64Encode()" aria-label="Encode to Base64">Encode</button>
@@ -72,10 +74,11 @@
                 </div>
                 <textarea id="base64-output" readonly aria-label="Base64 output"></textarea>
                 <div id="base64-error" class="error-message"></div>
+                <div id="base64-loading" class="loading">Processing...</div>
             </div>
 
             <div class="tool">
-                <h3><i class="fas fa-link"></i> URL Encoder / Decoder <span class="tooltip" data-tooltip="Encodes or decodes URLs for safe usage">?</span></h3>
+                <h3><i class="fas fa-link"></i> URL Encoder / Decoder <span class="tooltip" role="tooltip" aria-label="Encodes or decodes URLs for safe usage">?</span></h3>
                 <textarea id="url-input" placeholder="Enter URL here..." aria-label="URL input"></textarea>
                 <div class="button-group">
                     <button onclick="urlEncode()" aria-label="Encode URL">Encode</button>
@@ -85,10 +88,11 @@
                 </div>
                 <textarea id="url-output" readonly aria-label="URL output"></textarea>
                 <div id="url-error" class="error-message"></div>
+                <div id="url-loading" class="loading">Processing...</div>
             </div>
 
             <div class="tool">
-                <h3><i class="fas fa-code"></i> JSON Formatter <span class="tooltip" data-tooltip="Formats JSON for readability">?</span></h3>
+                <h3><i class="fas fa-code"></i> JSON Formatter <span class="tooltip" role="tooltip" aria-label="Formats JSON for readability">?</span></h3>
                 <textarea id="json-input" placeholder="Enter JSON here..." aria-label="JSON input"></textarea>
                 <div class="button-group">
                     <button onclick="formatJSON()" aria-label="Format JSON">Format</button>
@@ -97,10 +101,11 @@
                 </div>
                 <textarea id="json-output" readonly aria-label="Formatted JSON output"></textarea>
                 <div id="json-error" class="error-message"></div>
+                <div id="json-loading" class="loading">Processing...</div>
             </div>
 
             <div class="tool">
-                <h3><i class="fas fa-file-csv"></i> CSV to JSON Converter <span class="tooltip" data-tooltip="Converts CSV data to JSON format">?</span></h3>
+                <h3><i class="fas fa-file-csv"></i> CSV to JSON Converter <span class="tooltip" role="tooltip" aria-label="Converts CSV data to JSON format">?</span></h3>
                 <textarea id="csv-input" placeholder="Enter CSV here..." aria-label="CSV input"></textarea>
                 <div class="button-group">
                     <button onclick="convertCSVtoJSON()" aria-label="Convert CSV to JSON">Convert</button>
@@ -109,10 +114,11 @@
                 </div>
                 <textarea id="csv-output" readonly aria-label="JSON output from CSV"></textarea>
                 <div id="csv-error" class="error-message"></div>
+                <div id="csv-loading" class="loading">Processing...</div>
             </div>
 
             <div class="tool">
-                <h3><i class="fas fa-html5"></i> HTML Minifier / Beautifier <span class="tooltip" data-tooltip="Minifies or beautifies HTML code">?</span></h3>
+                <h3><i class="fas fa-html5"></i> HTML Minifier / Beautifier <span class="tooltip" role="tooltip" aria-label="Minifies or beautifies HTML code">?</span></h3>
                 <textarea id="html-input" placeholder="Enter HTML here..." aria-label="HTML input"></textarea>
                 <div class="button-group">
                     <button onclick="minifyHTML()" aria-label="Minify HTML">Minify</button>
@@ -122,6 +128,7 @@
                 </div>
                 <textarea id="html-output" readonly aria-label="HTML output"></textarea>
                 <div id="html-error" class="error-message"></div>
+                <div id="html-loading" class="loading">Processing...</div>
             </div>
         </section>
     </main>
@@ -129,10 +136,11 @@
     <footer>
         <p>© 2025 VIN NESIA TOOLS. All rights reserved.</p>
         <p>Contact: <a href="mailto:Vin.nesiaa.id@gmail.com">Vin.nesiaa.id@gmail.com</a></p>
-        <p>Follow us: <a href="#">Twitter</a> | <a href="#">GitHub</a></p>
+        <p>Follow us: <a href="https://twitter.com/vinnesia">Twitter</a> | <a href="https://github.com/vinnesia">GitHub</a></p>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.9/beautify-html.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
     <script src="js/scripts.js"></script>
 </body>
 </html>
