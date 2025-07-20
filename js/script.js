@@ -4,6 +4,7 @@ function toggleTheme() {
     const icon = document.querySelector('.theme-toggle i');
     icon.classList.toggle('fa-moon');
     icon.classList.toggle('fa-sun');
+    console.log('Theme toggled');
 }
 
 // Error Message
@@ -11,6 +12,7 @@ function showError(elementId, message) {
     const errorDiv = document.getElementById(`${elementId}-error`);
     errorDiv.textContent = message;
     setTimeout(() => (errorDiv.textContent = ''), 3000);
+    console.log(`Error shown for ${elementId}: ${message}`);
 }
 
 // Loading Indicator
@@ -18,6 +20,7 @@ function showLoading(elementId) {
     const loadingDiv = document.getElementById(`${elementId}-loading`);
     loadingDiv.classList.add('active');
     setTimeout(() => loadingDiv.classList.remove('active'), 1000); // Simulasi delay
+    console.log(`Loading shown for ${elementId}`);
 }
 
 // Copy to Clipboard
@@ -46,6 +49,7 @@ function copyToClipboard(elementId) {
         }
         document.body.removeChild(textarea);
     }
+    console.log(`Copy attempted for ${elementId}`);
 }
 
 // Clear Text
@@ -53,14 +57,15 @@ function clearText(inputId, outputId) {
     document.getElementById(inputId).value = '';
     document.getElementById(outputId).value = '';
     showError(inputId, 'Cleared!');
+    console.log(`Cleared ${inputId} and ${outputId}`);
 }
 
 // Save to History
 function saveToHistory(tool, input, output) {
     let history = JSON.parse(localStorage.getItem('conversionHistory') || '[]');
     history.push({ tool, input, output, timestamp: new Date().toISOString() });
-    if (history.length > 50) history.shift(); // Batasi hingga 50 entri
     localStorage.setItem('conversionHistory', JSON.stringify(history));
+    console.log(`Saved to history: ${tool}`);
 }
 
 // Text Converter
@@ -75,6 +80,7 @@ function convertText(type) {
     const result = type === 'uppercase' ? input.toUpperCase() : input.toLowerCase();
     output.value = result;
     saveToHistory('Text Converter', input, result);
+    console.log(`Converted text to ${type}: ${result}`);
 }
 
 // Base64 Encoder/Decoder
@@ -93,6 +99,7 @@ function base64Encode() {
     } catch (e) {
         showError('base64-input', 'Invalid input for encoding');
     }
+    console.log(`Base64 encoded: ${output.value}`);
 }
 
 function base64Decode() {
@@ -110,6 +117,7 @@ function base64Decode() {
     } catch (e) {
         showError('base64-input', 'Invalid Base64 string');
     }
+    console.log(`Base64 decoded: ${output.value}`);
 }
 
 // URL Encoder/Decoder
@@ -124,6 +132,7 @@ function urlEncode() {
     const result = encodeURIComponent(input);
     output.value = result;
     saveToHistory('URL Encoder', input, result);
+    console.log(`URL encoded: ${result}`);
 }
 
 function urlDecode() {
@@ -141,6 +150,7 @@ function urlDecode() {
     } catch (e) {
         showError('url-input', 'Invalid URL encoding');
     }
+    console.log(`URL decoded: ${result}`);
 }
 
 // JSON Formatter
@@ -160,6 +170,7 @@ function formatJSON() {
     } catch (e) {
         showError('json-input', 'Invalid JSON: ' + e.message);
     }
+    console.log(`JSON formatted: ${output.value}`);
 }
 
 // CSV to JSON Converter
@@ -188,6 +199,7 @@ function convertCSVtoJSON() {
     } catch (e) {
         showError('csv-input', 'Invalid CSV format');
     }
+    console.log(`CSV to JSON converted: ${output.value}`);
 }
 
 // HTML Minifier/Beautifier
@@ -202,6 +214,7 @@ function minifyHTML() {
     const result = input.replace(/\s+/g, ' ').trim();
     output.value = result;
     saveToHistory('HTML Minifier', input, result);
+    console.log(`HTML minified: ${result}`);
 }
 
 function beautifyHTML() {
@@ -219,4 +232,5 @@ function beautifyHTML() {
     } catch (e) {
         showError('html-input', 'Invalid HTML');
     }
+    console.log(`HTML beautified: ${result}`);
 }
